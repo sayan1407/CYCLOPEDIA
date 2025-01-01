@@ -57,12 +57,20 @@ class CyclopediaClassPage extends React.Component{
             }
         })
       }
+      handleHideInstructorClick = () =>{
+        this.setState((previousState) => {
+            return{
+                hideInstructor : !previousState.hideInstructor
+            }
+        })
+      }
       render() {
         console.log("Render Component");
+        console.log(this.state.hideInstructor)
         return (
           <div>
             {this.state.instructor && (
-              <Instructor instructor = {this.state.instructor} />
+              <Instructor instructor = {this.state.instructor} handleHideInstructorClick = {this.handleHideInstructorClick} hideInstructor = {this.state.hideInstructor}/>
               
             )}
             <div className="p-3">
