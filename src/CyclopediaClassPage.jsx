@@ -36,9 +36,25 @@ class CyclopediaClassPage extends React.Component{
         }
         
       };
-      componentDidUpdate() {
+      componentDidUpdate = async (previousProps,previousState)  => {
         console.log("Component Did Update");
         localStorage.setItem("cyclopediaState",JSON.stringify(this.state))
+        if(previousState.studentCount < this.state.studentCount){
+            const newStudent = await getRandomUser();
+            console.log(newStudent.data.first_name);
+            this.setState((prevState) => {
+                 return {
+                    studentList : [...prevState.studentList,{
+                        name : newStudent.data.first_name + " " + newStudent.data.last_name
+                    }]
+                 }
+            })
+        }
+        else if(previousState.studentCount > this.state.studentCount){
+            this.setState({studentList : []})
+        }
+        
+        console.log(this.state.studentList);
       }
       componentWillUnmount() {
         console.log("Component Will UnMount");
@@ -73,7 +89,7 @@ class CyclopediaClassPage extends React.Component{
             <i className={`bi ${this.state.hideInstructor ? "bi-toggle-off" : "bi-toggle-on"}  btn btn-success btn-sm`} onClick={this.handleHideInstructorClick}></i>
        
             <br />
-            {!this.state.hideInstructor && (
+            {!this.state.hideInstructor && this.state.instructor && (
               <Instructor instructor = {this.state.instructor} hideInstructor = {this.state.hideInstructor}/>
               
             )}
@@ -94,6 +110,11 @@ class CyclopediaClassPage extends React.Component{
                 <button className="btn btn-success btn-sm" onClick={this.handleAddStudent}>Add Student</button>
                 &nbsp;
                 <button className="btn btn-danger btn-sm" onClick={this.handleRemoveAllStudent}>Remove All Student</button>
+                {this.state.studentCount > 0 && this.state.studentList.map((student,index) => {
+                    return(
+                        <div className="text-white" key={index}>- {student.name}</div>
+                    )
+                })}
             </div>
           </div>
         );
