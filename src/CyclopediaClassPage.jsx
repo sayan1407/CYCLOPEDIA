@@ -31,12 +31,26 @@ class CyclopediaClassPage extends React.Component{
       componentWillUnmount() {
         console.log("Component Will UnMount");
       }
+      handleAddStudent = () => {
+        this.setState((previousState) => {
+            return{
+                studentCount : previousState.studentCount + 1
+            }
+        })
+      }
+      handleRemoveAllStudent = () => {
+        this.setState((previousState) => {
+            return{
+                studentCount : 0
+            }
+        })
+      }
       render() {
         console.log("Render Component");
         return (
           <div>
-             {this.state.instructor && (
-                <div className="p-3">
+            {this.state.instructor && (
+              <div className="p-3">
                 <span className="h4 text-success">Instructor</span>
                 <i className=" bi bi-toggle-off btn btn-success btn-sm"></i>
                 <br />
@@ -46,7 +60,14 @@ class CyclopediaClassPage extends React.Component{
                 Phone : {this.state.instructor.phone}
                 <br />
               </div>
-             )}
+              
+            )}
+            <div className="p-3">
+                <span className="h4 text-success">Student Count : {this.state.studentCount}</span> <br/>
+                <button className="btn btn-success btn-sm" onClick={this.handleAddStudent}>Add Student</button>
+                &nbsp;
+                <button className="btn btn-danger btn-sm" onClick={this.handleRemoveAllStudent}>Remove All Student</button>
+            </div>
           </div>
         );
       }
