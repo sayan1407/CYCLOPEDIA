@@ -9,6 +9,8 @@ class CyclopediaClassPage extends React.Component{
           studentList: [],
           studentCount: 0,
           hideInstructor: false,
+          inputName : "",
+          inputFeedback : ""
         };
       }
       componentDidMount = async () => {
@@ -62,6 +64,18 @@ class CyclopediaClassPage extends React.Component{
               </div>
               
             )}
+            <div className="p-3">
+                <span className="h4 text-success">Feedback</span>
+                <br/>
+                <input type="text" placeholder="Name..." 
+                onChange={(e) => this.setState({inputName : e.target.value})} />
+                Value : {this.state.inputName}
+                <br/>
+                <textarea placeholder="Feedback..." 
+                onChange={(e) => this.setState({inputFeedback : e.target.value})}
+                ></textarea>
+                Value : {this.state.inputFeedback}
+            </div>
             <div className="p-3">
                 <span className="h4 text-success">Student Count : {this.state.studentCount}</span> <br/>
                 <button className="btn btn-success btn-sm" onClick={this.handleAddStudent}>Add Student</button>
