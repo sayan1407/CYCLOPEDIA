@@ -69,8 +69,12 @@ class CyclopediaClassPage extends React.Component{
         console.log(this.state.hideInstructor)
         return (
           <div>
-            {this.state.instructor && (
-              <Instructor instructor = {this.state.instructor} handleHideInstructorClick = {this.handleHideInstructorClick} hideInstructor = {this.state.hideInstructor}/>
+            <span className="h4 text-success">Instructor</span>
+            <i className={`bi ${this.state.hideInstructor ? "bi-toggle-off" : "bi-toggle-on"}  btn btn-success btn-sm`} onClick={this.handleHideInstructorClick}></i>
+       
+            <br />
+            {!this.state.hideInstructor && (
+              <Instructor instructor = {this.state.instructor} hideInstructor = {this.state.hideInstructor}/>
               
             )}
             <div className="p-3">

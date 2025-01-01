@@ -15,11 +15,8 @@ class Instructor extends React.Component {
     console.log("Instructor - Render")
     return (
       <div className="p-3">
-        <span className="h4 text-success">Instructor</span>
-        <i className={`bi ${this.props.hideInstructor ? "bi-toggle-off" : "bi-toggle-on"}  btn btn-success btn-sm`} onClick={() => this.props.handleHideInstructorClick()}></i>
-       
-        <br />
-        {!this.props.hideInstructor && (
+        
+         
             <div>
 
             Name: {this.props.instructor.name} <br />
@@ -29,7 +26,7 @@ class Instructor extends React.Component {
             <br />
             </div>
 
-        )}
+        
         
       </div>
     );
