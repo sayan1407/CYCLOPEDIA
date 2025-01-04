@@ -91,63 +91,7 @@ const CyclopediaFuncPage = () => {
       console.log("This will be invoked when component got unmounted")
     }
    },[])
-    // constructor(props) {
-    //     super(props);
-    //     this.state = JSON.parse(localStorage.getItem("cyclopediaState")) || {
-    //       instructor: undefined,
-    //       studentList: [],
-    //       studentCount: 0,
-    //       hideInstructor: false,
-    //       inputName : "",
-    //       inputFeedback : ""
-    //     };
-    //   }
-    //   componentDidMount = async () => {
-    //     console.log("Component Did Mount");
-       
-    //     if(JSON.parse(localStorage.getItem("cyclopediaState")))
-    //     {
-
-    //     }
-    //     else{
-    //       const response = await getRandomUser();
-    //       console.log(response);
-    //         this.setState((prevState) => {
-    //             return {
-    //               instructor: {
-    //                 name: response.data.first_name + " " + response.data.last_name,
-    //                 email: response.data.email,
-    //                 phone: response.data.phone_number,
-    //               },
-    //             };
-    //           });
-
-    //     }
-        
-    //   };
-    //   componentDidUpdate = async (previousProps,previousState)  => {
-    //     console.log("Component Did Update");
-    //     localStorage.setItem("cyclopediaState",JSON.stringify(this.state))
-    //     if(previousState.studentCount < this.state.studentCount){
-    //         const newStudent = await getRandomUser();
-    //         console.log(newStudent.data.first_name);
-    //         this.setState((prevState) => {
-    //              return {
-    //                 studentList : [...prevState.studentList,{
-    //                     name : newStudent.data.first_name + " " + newStudent.data.last_name
-    //                 }]
-    //              }
-    //         })
-    //     }
-    //     else if(previousState.studentCount > this.state.studentCount){
-    //         this.setState({studentList : []})
-    //     }
-        
-    //     console.log(this.state.studentList);
-    //   }
-    //   componentWillUnmount() {
-    //     console.log("Component Will UnMount");
-    //   }
+    
      const handleAddStudent = () => {
        setState((previousState) => {
             return{
